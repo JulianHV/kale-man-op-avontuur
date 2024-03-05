@@ -33,9 +33,12 @@
         // Hier komen alle afbeeldingen en spritesheets enz die in de game worden gebruikt
 
         this.load.image('lucht', 'assets/background-level-1.jpg');
-        this.load.image("Mario", "assets/Mario.png")
-        this.load.image("platform", "assets/platform.png")
+        this.load.image("Johan", "assets/Johan.png")
         this.load.image('grond', "assets/background-level-1-road-collision.jpg")
+        this.load.image('platform_right', "assets/platform_right")
+        this.load.image('platform_center_right', "assets/platform_center_right")
+        this.load.image('platform_center_left', "assets/platform_center_left")
+        this.load.image('platform_left', "assets/platform_left")
         
     }
 
@@ -45,30 +48,28 @@
         this.add.image(430, 300, 'lucht');
         this.add.image(420, 614, 'grond');
 
-        platforms = this.physics.add.staticGroup();
+        spawnPlatform_Left(this, 300, 400);
 
-        spawnPlatform(this, 300, 400);
-
-        player = this.physics.add.sprite(100, 564, 'Mario');
+        player = this.physics.add.sprite(100, 564, 'Johan');
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('Mario', { start: 0, end: 3 }),
+            frames: this.anims.generateFrameNumbers('Johan', { start: 0, end: 3 }),
             frameRate: 10,
             repeat: -1
         });
 
         this.anims.create({
             key: 'turn',
-            frames: [ { key: 'Mario', frame: 4 } ],
+            frames: [ { key: 'Johan', frame: 4 } ],
             frameRate: 20
         });
 
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('Mario', { start: 5, end: 8 }),
+            frames: this.anims.generateFrameNumbers('Johan', { start: 5, end: 8 }),
             frameRate: 10,
             repeat: -1
         });
@@ -78,8 +79,26 @@
     {
         
     }
-    function spawnPlatform(scene, x, y) {
-        var platform = platforms.create(x, y, 'platform');
+    function spawnPlatform_Left(scene, x, y) {
+        var platform = platforms.create(x, y, 'platform_left');
+        platform.setScale(0.13);
+        platform.refreshBody();
+    }
+
+    function spawnPlatform_CenterLeft(scene, x, y) {
+        var platform = platforms.create(x, y, 'platform_center_left');
+        platform.setScale(0.13);
+        platform.refreshBody();
+    }
+
+    function spawnPlatform_Right(scene, x, y) {
+        var platform = platforms.create(x, y, 'platform_right');
+        platform.setScale(0.13);
+        platform.refreshBody();
+    }
+
+    function spawnPlatform_CenterRight(scene, x, y) {
+        var platform = platforms.create(x, y, 'platform_center_right');
         platform.setScale(0.13);
         platform.refreshBody();
     }
