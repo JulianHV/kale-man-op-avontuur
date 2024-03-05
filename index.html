@@ -34,12 +34,14 @@
         this.load.image('lucht', 'assets/background-level-1.jpg');
         this.load.image("Mario", "assets/Mario.png")
         this.load.image("platform", "assets/platform.png")
+        this.load.image("grond", "assets/background-level-1-road-collision.jpg")
     }
 
     function create ()
     {
         // Hier heb ik de lucht toegevoegd als achtergrond
-        this.add.image(400, 300, 'lucht');
+        this.add.image(430, 300, 'lucht');
+        this.add.image(420, 614, 'grond')
 
         // Physics voor de platformen toegevoegs
         platforms = this.physics.add.staticGroup();
