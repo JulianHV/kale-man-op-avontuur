@@ -26,6 +26,7 @@
     };
 
     var game = new Phaser.Game(config);
+    var platforms;
 
     function preload ()
     {
@@ -34,25 +35,21 @@
         this.load.image('lucht', 'assets/background-level-1.jpg');
         this.load.image("Mario", "assets/Mario.png")
         this.load.image("platform", "assets/platform.png")
+        this.load.image('grond', "assets/background-level-1-road-collision.jpg")
+        
     }
 
     function create ()
     {
         // Hier heb ik de lucht toegevoegd als achtergrond
-        this.add.image(400, 300, 'lucht');
+        this.add.image(430, 300, 'lucht');
+        this.add.image(420, 614, 'grond');
 
-        // Physics voor de platformen toegevoegs
         platforms = this.physics.add.staticGroup();
 
-        // Hier worden de platformen op een plek gezet
-        platforms.create(400, 568, 'platform').setScale(2).refreshBody();
+        spawnPlatform(this, 300, 400);
 
-        platforms.create(600, 400, 'platform');
-        platforms.create(50, 250, 'platform');
-        platforms.create(750, 220, 'platform');
-
-        player = this.physics.add.sprite(100, 450, 'Mario');
-
+        player = this.physics.add.sprite(100, 564, 'Mario');
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
@@ -79,6 +76,12 @@
 
     function update ()
     {
+        
+    }
+    function spawnPlatform(scene, x, y) {
+        var platform = platforms.create(x, y, 'platform');
+        platform.setScale(0.13);
+        platform.refreshBody();
     }
 
 </script>
