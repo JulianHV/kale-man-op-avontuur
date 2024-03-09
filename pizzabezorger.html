@@ -33,7 +33,7 @@
         // Hier komen alle afbeeldingen en spritesheets enz die in de game worden gebruikt
 
         this.load.image('lucht', 'assets/background-level-1.jpg');
-        this.load.image("Johan", "assets/Johan.png")
+        this.load.spritesheet("Johan", "assets/Johan.png")
         this.load.image('grond', "assets/background-level-1-road-collision.jpg")
         this.load.image('platform_right', "assets/platform_right")
         this.load.image('platform_center_right', "assets/platform_center_right")
@@ -77,6 +77,30 @@
 
     function update ()
     {
+        // Alle inputs voor de playercontrols
+        if (cursors.left.isDown)
+    {
+        player.setVelocityX(-160);
+
+        player.anims.play('left', true);
+    }
+    else if (cursors.right.isDown)
+    {
+        player.setVelocityX(160);
+
+        player.anims.play('right', true);
+    }
+    else
+    {
+        player.setVelocityX(0);
+
+        player.anims.play('turn');
+    }
+
+    if (cursors.up.isDown && player.body.touching.down)
+    {
+        player.setVelocityY(-330);
+    }
         
     }
     function spawnPlatform_Left(scene, x, y) {
