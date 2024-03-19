@@ -36,17 +36,18 @@
         this.load.image('platform_center_right', "assets/platform_center_right")
         this.load.image('platform_center_left', "assets/platform_center_left")
         this.load.image('platform_left', "assets/platform_left")
+        this.load.image('grond', "assets/level2-road-background.png")
     }
 
     function create ()
     {
         // Toevoegen van achtergrondafbeelding
-        this.add.image(430, 300, 'lucht');
+        this.add.image(430, 322, 'lucht');
 
         platforms = this.physics.add.staticGroup();
 
         // Platformen spawnen
-        spawnPlatform_Grond(this, 450, 614); // Plaats de grond op de gewenste locatie
+        spawnPlatform_Grond(this, 562, 734); // Plaats de grond op de gewenste locatie
 
         spawnPlatform_Left(this, 300, 400);
 
@@ -80,6 +81,12 @@
 
         // Collisions
         this.physics.add.collider(player, platforms);
+
+        this.physics.world.on('worldbounds', function(body) {
+            if (body.gameObject === player) {
+                window.location.href = 'helicopter-piloot.html';
+            }
+        }, this);
     }
 
     function update ()
@@ -136,6 +143,7 @@
     function spawnPlatform_Grond(scene, x, y) {
         var platform = platforms.create(x, y, 'grond');
         platform.setScale(1); // Schaal aanpassen indien nodig
+        platform.setOrigin(0.5, 1);
         platform.refreshBody();
     }
 
