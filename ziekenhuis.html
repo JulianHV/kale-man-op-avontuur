@@ -81,6 +81,12 @@
 
         // Collisions
         this.physics.add.collider(player, platforms);
+
+        this.physics.world.on('worldbounds', function(body) {
+            if (body.gameObject === player) {
+                window.location.href = 'helicopter-piloot.html';
+            }
+        }, this);
     }
 
     function update ()
