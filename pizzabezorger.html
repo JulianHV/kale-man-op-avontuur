@@ -41,7 +41,7 @@
     {
         // Laden van afbeeldingen en spritesheets voor de game
         this.load.image('lucht', 'assets/background-level-1.jpg');
-        this.load.spritesheet("Johan", "assets/Naamloos.png", { frameWidth: 64, frameHeight: 96 });
+        this.load.spritesheet("Johan", "assets/mario.png", { frameWidth: 32, frameHeight: 48 });
         // Laden van de platformafbeeldingen
         this.load.image('grond', "assets/background-level-1-road-collision.jpg");
         this.load.image('platform_right', "assets/platform_right.png");
@@ -121,25 +121,25 @@
 
     function spawnPlatform_Left(scene, x, y) {
         var platform = platforms.create(x, y, 'platform_left');
-        platform.setScale(0.13);
+        platform.setScale(1);
         platform.refreshBody();
     }
 
     function spawnPlatform_CenterLeft(scene, x, y) {
         var platform = platforms.create(x, y, 'platform_center_left');
-        platform.setScale(0.13);
+        platform.setScale(1);
         platform.refreshBody();
     }
 
     function spawnPlatform_Right(scene, x, y) {
         var platform = platforms.create(x, y, 'platform_right');
-        platform.setScale(0.13);
+        platform.setScale(1);
         platform.refreshBody();
     }
 
     function spawnPlatform_CenterRight(scene, x, y) {
         var platform = platforms.create(x, y, 'platform_center_right');
-        platform.setScale(0.13);
+        platform.setScale(1);
         platform.refreshBody();
     }
 
