@@ -41,7 +41,7 @@
     {
         // Laden van afbeeldingen en spritesheets voor de game
         this.load.image('lucht', 'assets/background-level-1.jpg');
-        this.load.spritesheet("Johan", "assets/Naamloos2.png", { frameWidth: 100, frameHeight: 96 });
+        this.load.spritesheet("Johan", "assets/Naamloos2.png", { frameWidth: 37, frameHeight: 92 });
         // Laden van de platformafbeeldingen
         this.load.image('grond', "assets/background-level-1-road-collision.jpg");
         this.load.image('platform_right', "assets/platform_right.png");
@@ -62,7 +62,7 @@
 
         spawnPlatform_Left(this, 300, 400);
 
-        player = this.physics.add.sprite(100, 96, 'Johan');
+        player = this.physics.add.sprite(37, 92, 'Johan');
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
