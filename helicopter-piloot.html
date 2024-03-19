@@ -30,20 +30,32 @@
 
     function preload ()
     {
-        this.load.spritesheet("Johan", "assets/Johan.png")
+        this.load.image('lucht', 'assets/level-3-lucht-background.avif');
+        this.load.spritesheet("Johan", "assets/Naamloos.png", { frameWidth: 450, frameHeight: 264 })
         this.load.image('platform_right', "assets/platform_right")
         this.load.image('platform_center_right', "assets/platform_center_right")
         this.load.image('platform_center_left', "assets/platform_center_left")
         this.load.image('platform_left', "assets/platform_left")
+        this.load.image('grond', "assets/level-3-background-road.png")
     }
 
     function create ()
     {
-        
-        player = this.physics.add.sprite(100, 564, 'Johan');
+        // Toevoegen van achtergrondafbeelding
+        this.add.image(430, 300, 'lucht');
+
+        platforms = this.physics.add.staticGroup();
+
+        // Platformen spawnen
+        spawnPlatform_Grond(this, 420, 614); // Plaats de grond op de gewenste locatie
+
+        spawnPlatform_Left(this, 300, 400);
+
+        player = this.physics.add.sprite(100, 450, 'Johan');
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
 
+        // Player animaties
         this.anims.create({
             key: 'left',
             frames: this.anims.generateFrameNumbers('Johan', { start: 0, end: 3 }),
@@ -63,58 +75,68 @@
             frameRate: 10,
             repeat: -1
         });
+
+        // Input detectie
+        cursors = this.input.keyboard.createCursorKeys();
+
+        // Collisions
+        this.physics.add.collider(player, platforms);
     }
 
     function update ()
     {
         
+        // Player controls
         if (cursors.left.isDown)
-    {
-        player.setVelocityX(-160);
+        {
+            player.setVelocityX(-160);
+            player.anims.play('left', true);
+        }
+        else if (cursors.right.isDown)
+        {
+            player.setVelocityX(160);
+            player.anims.play('right', true);
+        }
+        else
+        {
+            player.setVelocityX(0);
+            player.anims.play('turn');
+        }
 
-        player.anims.play('left', true);
-    }
-    else if (cursors.right.isDown)
-    {
-        player.setVelocityX(160);
-
-        player.anims.play('right', true);
-    }
-    else
-    {
-        player.setVelocityX(0);
-
-        player.anims.play('turn');
-    }
-
-    if (cursors.up.isDown && player.body.touching.down)
-    {
-        player.setVelocityY(-330);
-    }
+        if (cursors.up.isDown && player.body.touching.down)
+        {
+            player.setVelocityY(-330);
+        }
         
     }
 
     function spawnPlatform_Left(scene, x, y) {
         var platform = platforms.create(x, y, 'platform_left');
-        platform.setScale(0.13);
+        platform.setScale(1);
         platform.refreshBody();
     }
 
     function spawnPlatform_CenterLeft(scene, x, y) {
         var platform = platforms.create(x, y, 'platform_center_left');
-        platform.setScale(0.13);
+        platform.setScale(1);
         platform.refreshBody();
     }
 
     function spawnPlatform_Right(scene, x, y) {
         var platform = platforms.create(x, y, 'platform_right');
-        platform.setScale(0.13);
+        platform.setScale(1);
         platform.refreshBody();
     }
 
     function spawnPlatform_CenterRight(scene, x, y) {
         var platform = platforms.create(x, y, 'platform_center_right');
-        platform.setScale(0.13);
+        platform.setScale(1);
+        platform.refreshBody();
+    }
+
+    function spawnPlatform_Grond(scene, x, y) {
+        var platform = platforms.create(x, y, 'grond');
+        platform.setScale(1); // Schaal aanpassen indien nodig
         platform.refreshBody();
     }
 
