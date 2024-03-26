@@ -33,6 +33,7 @@
         this.load.image('lucht', 'assets/kies-je-taal-background.png');
         this.load.image('amerika', 'assets/amerika_button.png')
         this.load.image('nederland', 'assets/nederland_button.png')
+        this.load.image('pijl', 'assets/arrow.png')
 
     }
 
@@ -54,6 +55,48 @@
         window.location.href = 'pizzabezorger.html';
     });
 
+    var arrowsGroup = this.add.group();
+
+    var arrow = arrowsGroup.create(265, 210, 'pijl');
+    var arrow2 = arrowsGroup.create(590, 240, 'pijl')
+    arrow.setScale(0.2); 
+    arrow2.setScale(0.2)
+
+    var upTween = this.tweens.add({
+        targets: arrow,
+        y: 200, 
+        duration: 1000, 
+        ease: 'Linear',
+        repeat: -1, 
+        yoyo: true 
+    });
+
+    var downTween = this.tweens.add({
+        targets: arrow,
+        y: 400, 
+        duration: 1000, 
+        ease: 'Linear',
+        repeat: -1, 
+        yoyo: true 
+    });
+
+    var upTween = this.tweens.add({
+        targets: arrow2,
+        y: 200, 
+        duration: 1000, 
+        ease: 'Linear',
+        repeat: -1, 
+        yoyo: true 
+    });
+
+    var downTween = this.tweens.add({
+        targets: arrow2,
+        y: 400, 
+        duration: 1000, 
+        ease: 'Linear',
+        repeat: -1, 
+        yoyo: true 
+    });
     }
 
     function update ()
