@@ -1,0 +1,68 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Level 2</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+    var config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 680,
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+
+    var game = new Phaser.Game(config);
+    var platforms;
+
+    function preload ()
+    {
+        this.load.image('lucht', 'assets/kies-je-taal-background.png');
+        this.load.image('amerika', 'assets/amerika_button.png')
+        this.load.image('nederland', 'assets/nederland_button.png')
+
+    }
+
+    function create ()
+    {
+        // Toevoegen van achtergrondafbeelding
+        this.add.image(430, 340, 'lucht');
+
+        var amerikaButton = this.add.image(590, 240, 'amerika').setInteractive();
+        var nederlandButton = this.add.image(265, 210, 'nederland').setInteractive();
+
+    amerikaButton.on('pointerdown', function () {
+        // Ga naar het Amerikaanse HTML-bestand
+        window.location.href = 'pizzabezorger.html';
+    });
+
+    nederlandButton.on('pointerdown', function () {
+        // Ga naar het Nederlandse HTML-bestand
+        window.location.href = 'pizzabezorger.html';
+    });
+
+    }
+
+    function update ()
+    {
+        
+
+    }
+
+</script>
+
+</body>
+</html>
