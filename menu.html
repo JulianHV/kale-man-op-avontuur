@@ -57,14 +57,14 @@
 
     var arrowsGroup = this.add.group();
 
-    var arrow = arrowsGroup.create(265, 210, 'pijl');
-    var arrow2 = arrowsGroup.create(590, 240, 'pijl')
+    var arrow = arrowsGroup.create(250, 110, 'pijl');
+    var arrow2 = arrowsGroup.create(610, 150, 'pijl')
     arrow.setScale(0.2); 
     arrow2.setScale(0.2)
 
     var upTween = this.tweens.add({
         targets: arrow,
-        y: 200, 
+        y: 110, 
         duration: 1000, 
         ease: 'Linear',
         repeat: -1, 
@@ -73,7 +73,7 @@
 
     var downTween = this.tweens.add({
         targets: arrow,
-        y: 400, 
+        y: 130, 
         duration: 1000, 
         ease: 'Linear',
         repeat: -1, 
@@ -82,7 +82,7 @@
 
     var upTween = this.tweens.add({
         targets: arrow2,
-        y: 200, 
+        y: 150, 
         duration: 1000, 
         ease: 'Linear',
         repeat: -1, 
@@ -91,7 +91,7 @@
 
     var downTween = this.tweens.add({
         targets: arrow2,
-        y: 400, 
+        y: 170, 
         duration: 1000, 
         ease: 'Linear',
         repeat: -1, 
