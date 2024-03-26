@@ -50,6 +50,7 @@
         this.load.image('platform_center_right', "assets/platform_center_right.png");
         this.load.image('platform_center_left', "assets/platform_center_left.png");
         this.load.image('platform_left', "assets/platform_left.png");
+        this.load.image('put','assets/Sewer_Sprite.png');
     }
 
     function create()
@@ -61,6 +62,7 @@
             this.add.image(i * backgroundWidth, -47, 'lucht').setOrigin(0, 0); // Lucht
             ground = this.add.image(i * backgroundWidth, 585, 'grond').setOrigin(0, 0); // Grond
             ground.visible = false; // Maak de grond onzichtbaar (deze wordt alleen gebruikt als collider)
+            this.add.image(i * backgroundWidth, -47, 'put').setOrigin(0, 0);
             
             platforms.add(ground); // Voeg de grond toe aan de groep van platforms
         }
