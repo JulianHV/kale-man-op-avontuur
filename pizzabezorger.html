@@ -61,9 +61,9 @@
 
         // Maak lucht en grond voor elke achtergrond
         for (var i = 0; i < totalBackgrounds; i++) {
-            var put = this.physics.add.image(i * backgroundWidth, 555, 'put').setOrigin(22.25, 0); // Maak de put een fysiek object
+            var put = this.physics.add.image(i * backgroundWidth + 32.25, 555, 'put').setOrigin(30, 0); // Maak de put een fysiek object
             putten.add(put); // Voeg de put toe aan de groep putten
-            put.body.setSize(32, 32).setOffset(0, 0); // Stel de grootte van het lichaam van de put in
+            put.body.setSize(2, 2).setOffset(0, 0); // Stel de grootte van het lichaam van de put in
             put.body.setAllowGravity(false); // Zorg ervoor dat de putten geen zwaartekracht hebben
             this.add.image(i * backgroundWidth, -47, 'lucht').setOrigin(0, 0);
             ground = this.add.image(i * backgroundWidth, 585, 'grond').setOrigin(0, 0);
