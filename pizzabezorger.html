@@ -74,9 +74,11 @@
 
         this.physics.world.bounds.width = totalBackgrounds * backgroundWidth;
 
-        // Rest van je create functie...
-
+        // Spawn platformen
         spawnPlatform_Left(this, 300, 400);
+        spawnPlatform_Center(this, 600, 300);
+        spawnPlatform_Center(this, 1200, 200);
+        spawnPlatform_Center(this, 1800, 300);
 
         player = this.physics.add.sprite(50, 492, 'Johan');
         player.setBounce(0.2);
@@ -146,6 +148,17 @@
         var platform = platforms.create(x, y, 'platform_left');
         platform.setScale(1);
         platform.refreshBody();
+    }
+
+    function spawnPlatform_Center(scene, x, y) {
+        var platform = platforms.create(x, y, 'platform_center_right');
+        platform.setScale(1);
+        platform.refreshBody();
+        
+        // Plaats ook een platform aan de linkerkant van het midden
+        var platform_left = platforms.create(x - 200, y, 'platform_center_left');
+        platform_left.setScale(1);
+        platform_left.refreshBody();
     }
 
     function hitPut(player, put) {
